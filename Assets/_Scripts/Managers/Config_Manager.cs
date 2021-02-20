@@ -1,7 +1,7 @@
 ﻿public static class Config_Manager
 {
 	//public static string socket_uri = "http://192.168.0.116:5000/socket.io/";
-	public static string socket_uri = "https://haveyouheard-game.herokuapp.com/socket.io/";
+	public static string socket_uri = "https://haveyouheard.rj.r.appspot.com/socket.io/";
 
 	//public static string http_uri = "http://192.168.0.116:5000/";
 	public static string http_uri = "https://haveyouheard-game.herokuapp.com/";

@@ -180,22 +180,22 @@ namespace HaveYouHeard
 		void OnServerConnect(Socket socket, Packet packet, params object[] args)
 		{
 			Debug.Log("Connected");
-			if (!connected)
-			{
-				Invoke("DisconnectFromServer", 2.0f);
-			}else if(!Game_Manager.instance.game_started){
-				Game_Manager.instance.Get_User_Data();
+			//if (!connected)
+			//{
+				//Invoke("DisconnectFromServer", 2.0f);
+			if(!Game_Manager.instance.game_started){
+                Game_Manager.instance.Get_User_Data();
 			}
 		}
 
 		void OnServerDisconnect(Socket socket, Packet packet, params object[] args)
 		{
 			Debug.Log("Disconnected");
-			if (!connected)
-			{
-				connected = true;
-				Invoke("ConnectToServer", 2.0f);
-			}
+			//if (!connected)
+			//{
+				//connected = true;
+				//Invoke("ConnectToServer", 2.0f);
+			//}
 		}
 
 		void OnError(Socket socket, Packet packet, params object[] args)

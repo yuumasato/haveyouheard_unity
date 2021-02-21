@@ -32,7 +32,6 @@ namespace HaveYouHeard
             while (timer < 1.0f){
                 timer += Time.deltaTime / transition_duration;
                 float actual_pos = Mathf.Lerp(origin_pos, target_pos, timer);
-                Debug.Log(actual_pos);
                 car.anchoredPosition = new Vector2(actual_pos, car.anchoredPosition.y);
                 yield return null;
             }

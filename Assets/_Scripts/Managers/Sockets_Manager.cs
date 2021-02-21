@@ -208,7 +208,7 @@ namespace HaveYouHeard
 					Debug.LogWarning("Exception in an event handler!");
 					break;
 				case SocketIOErrors.Internal:
-					Debug.LogWarning("Internal error!");
+					Debug.LogWarning("Internal error!" + error);
 					break;
 				default:
 					Debug.LogWarning("server error!");

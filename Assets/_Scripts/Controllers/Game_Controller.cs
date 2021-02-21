@@ -245,6 +245,27 @@ public class Game_Controller : MonoBehaviour
                 }
             }
             return true;
+        }else if(actual_round >= 5){
+            Debug.Log("No clear winner");
+            // The winner is the one who took less time to submit the winning answers
+            Match_User lower_time = new Match_User();
+            lower_time.fulfillment_delay = 100000;
+            foreach (var match_user in Match_Manager.instance.match_users){
+                Debug.Log("time: " + match_user.fulfillment_delay.ToString());
+                if (match_user.points == winner.points){
+                    if (match_user.fulfillment_delay <= lower_time.fulfillment_delay){
+                        lower_time = match_user;
+                    }
+                }
+            }
+            foreach (var item in user_statistic_instances)
+            {
+                if (item.current_user.id_user == lower_time.id_user)
+                {
+                    winner_banner.text = "O melhor\n~Personagem~\n (mais rapido)" + item.username.text;
+                }
+            }
+            return true;
         }else{
             return false;
         }
@@ -265,11 +286,21 @@ public class Game_Controller : MonoBehaviour
         foreach (var match_user in Match_Manager.instance.match_users)
         {
             match_user.points = 0;
+            match_user.fulfillment_delay = 0;
         }
         foreach (var round in Match_Manager.instance.rounds){ 
             foreach(var match_user in Match_Manager.instance.match_users){ 
                 if(round.round_winner.id_user == match_user.id_user){
                     match_user.points++;
+                }
+            }
+            foreach (var match_round in Match_Manager.instance.rounds){
+                foreach (var fulfillment in match_round.fulfillments){
+                    foreach(var match_user in Match_Manager.instance.match_users){
+                        if(fulfillment.id_user == match_user.id_user){
+                            match_user.fulfillment_delay += fulfillment.fulfillment_delay;
+                        }
+                    }
                 }
             }
         }

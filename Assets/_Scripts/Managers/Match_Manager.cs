@@ -130,6 +130,7 @@ namespace HaveYouHeard
 		public bool is_player;
 		public bool won;
 		public int points;
+		public double fulfillment_delay;
 		public bool ready;
 		public string color;
 	}
@@ -175,6 +176,7 @@ namespace HaveYouHeard
 	public class FulFillment{
 		public int id_user;
 		public string fulfilled_news;
+		public double fulfillment_delay;
 	}
 	[System.Serializable]
 	public class Round_Winner{

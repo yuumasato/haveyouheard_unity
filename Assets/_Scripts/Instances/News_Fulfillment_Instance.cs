@@ -9,6 +9,7 @@ public class News_Fulfillment_Instance : MonoBehaviour
 {
 	TMP_InputField news_inputfield;
 	Button confirm_button;
+	float fulfillment_delay;
 
 	private void Awake()
 	{
@@ -32,6 +33,7 @@ public class News_Fulfillment_Instance : MonoBehaviour
 		news_inputfield.text = "";
 	}
 	public IEnumerator Timeout_Routine(){
+		fulfillment_delay = Time.time;
 		yield return new WaitForSeconds(20.0f);
 		Send_News_Fulfillment();
 	}
@@ -41,6 +43,7 @@ public class News_Fulfillment_Instance : MonoBehaviour
 		fulfillment_data_hash.Add("votes", 0);
 		fulfillment_data_hash.Add("id_user", User_Manager.instance.current_user.id);
 		fulfillment_data_hash.Add("fulfilled_news", ("<b>"+news_inputfield.text+"</b>"));
+		fulfillment_data_hash.Add("fulfillment_delay", (double) Time.time - fulfillment_delay);
 		Hashtable data_hash = new Hashtable();
 		data_hash.Add("fulfillment_data", fulfillment_data_hash);
 		data_hash.Add("match_data", Match_Manager.instance.current_match);

@@ -1,10 +1,12 @@
 ﻿public static class Config_Manager
 {
 	//public static string socket_uri = "http://192.168.0.116:5000/socket.io/";
-	public static string socket_uri = "https://haveyouheard.rj.r.appspot.com/socket.io/";
+	//public static string socket_uri = "https://haveyouheard.rj.r.appspot.com/socket.io/";
+	public static string socket_uri = "https://tranquil-lowlands-27725.herokuapp.com/socket.io/";
 
 	//public static string http_uri = "http://192.168.0.116:5000/";
-	public static string http_uri = "https://haveyouheard-game.herokuapp.com/";
+	//public static string http_uri = "https://haveyouheard-game.herokuapp.com/";
+	public static string http_uri = "https://tranquil-lowlands-27725.herokuapp.com/";
 
 	public static string get_users_request = "get_users";
 	public static string get_user_request = "get_user";

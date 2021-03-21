@@ -147,9 +147,10 @@ namespace HaveYouHeard
 			Hashtable hash_response = Parse_Response(args);
 			switch(hash_response["action"])
 			{
-				case "rejoin":
+				case "rejoin_match":
 					Debug.Log("USER RECONECTED");
 					Debug.Log(JsonMapper.ToJson(hash_response["data"]));
+					Match_Manager.instance.Update_Matchmaking_Status(JsonMapper.ToObject(JsonMapper.ToJson(hash_response["data"])));
 					break;
 				case "join_match":
 					JsonData temp_data = JsonMapper.ToObject(JsonMapper.ToJson(hash_response["data"]));
@@ -222,6 +223,7 @@ namespace HaveYouHeard
 			if(Match_Manager.instance.current_match.id != 0){
 				Hashtable hash = new Hashtable();
 				hash.Add("user_data", User_Manager.instance.current_user);
+				hash.Add("match_users_data", Match_Manager.instance.match_users);
 				hash.Add("match_data", Match_Manager.instance.current_match);
 				string json = JsonMapper.ToJson(hash);
 				manager.Socket.Emit("rejoin", json);

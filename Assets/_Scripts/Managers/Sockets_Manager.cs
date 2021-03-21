@@ -212,7 +212,7 @@ namespace HaveYouHeard
 					Debug.LogWarning("Internal error!" + error);
 					break;
 				default:
-					Debug.LogWarning("server error!");
+					Debug.LogWarning("server error!" + error.Message);
 					break;
 			}
 		}
